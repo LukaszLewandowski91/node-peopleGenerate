@@ -40,14 +40,14 @@ const generateNumber = () => {
   } else if (number.toString().length === 2) {
     finalNum = "0" + number.toString();
     return finalNum;
-  } else {
-    return number;
   }
+  return number;
 };
 
 for (let i = 0; i < 20; i++) {
   let firstName = "";
-
+  const minAge = 18;
+  const maxAge = 78;
   const gender = randChoice(genders);
   if (gender === "M") {
     firstName = randChoice(maleNames);
@@ -55,9 +55,8 @@ for (let i = 0; i < 20; i++) {
     firstName = randChoice(femaleNames);
   }
   const lastName = randChoice(lastNames);
-  const age = Math.floor(Math.random() * (78 - 18 + 1) + 18);
-  const email =
-    firstName.toLowerCase() + "." + lastName.toLowerCase() + "@gmail.com";
+  const age = Math.floor(Math.random() * (maxAge - minAge + 1) + minAge);
+  const email = `${firstName.toLowerCase()}.${lastName.toLowerCase()}@gmail.com`;
   const phoneNumber = `${generateNumber()}-${generateNumber()}-${generateNumber()}`;
 
   const person = {
